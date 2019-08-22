@@ -37,8 +37,8 @@ class Persons {
         return `Hello, my name is ${this.name}, I am from ${this.location}.`
     }
 }
-const Obi = new Persons("Fred", 30, "Bredrock")
-console.log(Obi.speak());
+const fred = new Persons("Fred", 30, "Bredrock")
+console.log(fred.speak());
 
 // #### Instructor
 
@@ -53,11 +53,11 @@ console.log(Obi.speak());
 //   * `grade` receives a `student` object and a `subject` string as arguments and logs out '{student.name} receives a perfect score on {subject}'
 
 class Instructor extends Persons {
-    constructor(name, age, location, specialty) {
+    constructor(name, age, location, specialty, favLanguage, catchPhrase) {
         super(name, age, location);
         this.specialty = specialty;
-        this.favLanguage = "JavaScript";
-        this.catchPhrase = "Don't forget the homies";
+        this.favLanguage = favLanguage;
+        this.catchPhrase = catchPhrase;
     }
     demo(subject){
         return `Today we are learning about ${subject}`
@@ -66,8 +66,17 @@ class Instructor extends Persons {
         return `${student.name} receives a perfect score on ${subject}`
     }
 }
-const Tunde = new Instructor ("Ali", 32, "Lagos", "Redox");
-console.log(Tunde.demo("java"))
+const tunde = new Instructor('Tunde',40, 'Calabar')
+// const tunde = new Instructor ({
+//     name: 'Tunde',
+//     age: 40,
+//     location: 'Calabar',
+//     specialty: 'Back-end',
+//     favLanguage: 'JavaScript',
+//     catchPhrase: `Don't forget the homies`,
+
+// });
+// console.log(tunde.grade(student.name,"java"))
 
 // #### Student
 
@@ -82,6 +91,41 @@ console.log(Tunde.demo("java"))
 //   * `PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
 //   * `sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
 
+class Students extends Persons {
+    constructor(name, age, location, favSubjects, previousBackground, className){
+        super(name, age, location);
+        this.favSubjects = favSubjects;
+        this.previousBackground = previousBackground;
+        this.className = className;
+    }
+    listsSubjects (){
+        return this.favSubjects;
+    }
+    PRAssignment(student,subject){
+        return `${this.name} has submitted a PR for ${subject}`
+    }
+    sprintChallenge(subject){
+        return `${this.name} has begun sprint challenge on ${subject}`
+    }
+}
+const student = new Students ('Brown',28,'Kano', ['Html', 'CSS', 'JavaScript'])
+// const student = new Students ({
+//     name: 'Brown',
+//     age: 28,
+//     location: 'Kanu',
+//     previousBackground: 'Mech Engineering',
+//     className: 'WEBEU3',
+//     favSubjects: ['Html', 'CSS', 'JavaScript'],
+
+// });
+console.log(student.PRAssignment("python"));
+console.log(student.listsSubjects());
+console.log(student.sprintChallenge("IOS"));
+
+console.log(tunde.grade(student.name,"java"));
+
+
+
 // #### Project Manager
 
 // * Now that we have instructors and students, we'd be nowhere without our PM's
@@ -93,4 +137,19 @@ console.log(Tunde.demo("java"))
 //   * `standUp` a method that takes in a slack channel and logs `{name} announces to {channel}, @channel standy times!​​​​​
 //   * `debugsCode` a method that takes in a student object and a subject and logs out `{name} debugs {student.name}'s code on {subject}`
 
+class ProjectManagers extends Persons {
+    constructor(name, age, location){
+        super(name, age, location);
+        this.gradClassName = "CS1";
+        this.favInstructor = "Sean";
+    }
+    standUp(){
+
+    }
+    debugsCode(student,subject){
+        return `${this.name} debugs ${student.name}'s code on ${subject}`
+    }
+}
+const swiz = new ProjectManagers ("Swiz", 35, "Kenya");
+console.log(swiz.debugsCode(student.name, "JavaScript"));
 
