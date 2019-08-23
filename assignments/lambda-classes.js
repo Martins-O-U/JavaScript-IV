@@ -40,6 +40,58 @@ class Persons {
 const fred = new Persons("Fred", 30, "Bredrock")
 console.log(fred.speak());
 
+
+// #### Student
+
+// * Now we need some students!
+// * Student uses the same attributes that have been set up by Person
+// * Student has the following unique props:
+//   * `previousBackground` i.e. what the Student used to do before Lambda School
+//   * `className` i.e. CS132
+//   * `favSubjects`. i.e. an array of the student's favorite subjects ['Html', 'CSS', 'JavaScript']
+// * Student has the following methods:
+//   * `listsSubjects` a method that logs out all of the student's favoriteSubjects one by one.
+//   * `PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
+//   * `sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
+
+class Students extends Persons {
+    constructor(name, age, location, favSubjects, previousBackground, className){
+        super(name, age, location);
+        this.favSubjects = favSubjects;
+        this.previousBackground = previousBackground;
+        this.className = className;
+    }
+    listsSubjects (){
+        const name = this.name;
+        this.favSubjects.forEach(subject => {
+            console.log(${subject})
+        });
+        return this.favSubjects;
+    }
+    PRAssignment(student,subject){
+        return `${this.name} has submitted a PR for ${subject}`
+    }
+    sprintChallenge(subject){
+        return `${this.name} has begun sprint challenge on ${subject}`
+    }
+}
+const student = new Students ('Brown',28,'Kano', ['Html', 'CSS', 'JavaScript'])
+// const student = new Students ({
+//     name: 'Brown',
+//     age: 28,
+//     location: 'Kanu',
+//     previousBackground: 'Mech Engineering',
+//     className: 'WEBEU3',
+//     favSubjects: ['Html', 'CSS', 'JavaScript'],
+
+// });
+console.log(student.PRAssignment("python"));
+console.log(student.listsSubjects());
+console.log(student.sprintChallenge("IOS"));
+
+console.log(tunde.grade(student.name,"java"));
+
+
 // #### Instructor
 
 // * Now that we have a Person as our base class, we'll build our Instructor class.
@@ -66,63 +118,10 @@ class Instructor extends Persons {
         return `${student.name} receives a perfect score on ${subject}`
     }
 }
-const tunde = new Instructor('Tunde',40, 'Calabar')
-// const tunde = new Instructor ({
-//     name: 'Tunde',
-//     age: 40,
-//     location: 'Calabar',
-//     specialty: 'Back-end',
-//     favLanguage: 'JavaScript',
-//     catchPhrase: `Don't forget the homies`,
+const tunde = new Instructor('Tunde', 40, 'Calabar', 'Back-end', 'JavaScript', `Don't forget the homies`);
 
-// });
-// console.log(tunde.grade(student.name,"java"))
-
-// #### Student
-
-// * Now we need some students!
-// * Student uses the same attributes that have been set up by Person
-// * Student has the following unique props:
-//   * `previousBackground` i.e. what the Student used to do before Lambda School
-//   * `className` i.e. CS132
-//   * `favSubjects`. i.e. an array of the student's favorite subjects ['Html', 'CSS', 'JavaScript']
-// * Student has the following methods:
-//   * `listsSubjects` a method that logs out all of the student's favoriteSubjects one by one.
-//   * `PRAssignment` a method that receives a subject as an argument and logs out that the `student.name has submitted a PR for {subject}`
-//   * `sprintChallenge` similar to PRAssignment but logs out `student.name has begun sprint challenge on {subject}`
-
-class Students extends Persons {
-    constructor(name, age, location, favSubjects, previousBackground, className){
-        super(name, age, location);
-        this.favSubjects = favSubjects;
-        this.previousBackground = previousBackground;
-        this.className = className;
-    }
-    listsSubjects (){
-        return this.favSubjects;
-    }
-    PRAssignment(student,subject){
-        return `${this.name} has submitted a PR for ${subject}`
-    }
-    sprintChallenge(subject){
-        return `${this.name} has begun sprint challenge on ${subject}`
-    }
-}
-const student = new Students ('Brown',28,'Kano', ['Html', 'CSS', 'JavaScript'])
-// const student = new Students ({
-//     name: 'Brown',
-//     age: 28,
-//     location: 'Kanu',
-//     previousBackground: 'Mech Engineering',
-//     className: 'WEBEU3',
-//     favSubjects: ['Html', 'CSS', 'JavaScript'],
-
-// });
-console.log(student.PRAssignment("python"));
-console.log(student.listsSubjects());
-console.log(student.sprintChallenge("IOS"));
-
-console.log(tunde.grade(student.name,"java"));
+console.log(tunde.demo("avasdv"));
+console.log(tunde.grade(student.name,"java"))
 
 
 
